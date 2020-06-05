@@ -1,0 +1,6 @@
+A new member will sign up by entering their name and date of birth,
+the system will then take them to a page asking them about medical details.
+
+A returning member will sign up with the same form but the system will find the existing record
+and not ask them for all the medical details again.
+
