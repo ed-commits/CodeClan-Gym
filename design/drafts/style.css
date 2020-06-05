@@ -1,0 +1,11 @@
+body {
+	background-color: #93B7BE;
+	color: #454545;
+	font-family: fantasy;
+}
+
+.box {
+	background-color: #D5C7BC;
+	padding: 20px;
+	margin: 20px;
+}
