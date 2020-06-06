@@ -1,8 +1,14 @@
+require('pry')
+
 require_relative('./sqlrunner')
 
 require_relative('../models/member')
-require_relative('../models/class')
+require_relative('../models/gymclass')
 require_relative('../models/booking')
+
+#Member.delete_all
+GymClass.delete_all
+#Booking.delete_all
 
 ed = Member.new({
     "name" => "Ed",
@@ -22,7 +28,7 @@ staff = Member.new({
     "pin" => 1142,
 })
 
-yoga = Class.new({
+yoga = GymClass.new({
     "name" => "Yoga",
     "instructor" => "Yogi Charles",
     "time_slot" => 0,
@@ -30,7 +36,7 @@ yoga = Class.new({
     "capacity" => 32,
 })
 
-kbbl = Class.new({
+kbbl = GymClass.new({
     "name" => "Kettle Bell Blast",
     "instructor" => "Cathy",
     "time_slot" => 1,
@@ -38,7 +44,7 @@ kbbl = Class.new({
     "capacity" => 4,
 })
 
-pilate = Class.new({
+pilate = GymClass.new({
     "name" => "Pilates",
     "instructor" => "Zavi",
     "time_slot" => 0,
@@ -58,3 +64,6 @@ Booking.new({
     "member_id" => ed.id,
     "class_id" => yoga.id
 })
+
+binding.pry
+nil
