@@ -2,26 +2,27 @@ require_relative('./sqlrunner')
 
 require_relative('../models/member')
 require_relative('../models/class')
+require_relative('../models/booking')
 
-Member.new({
+ed = Member.new({
     "name" => "Ed",
     "dob" => "02/Oct/1988",
     "pin" => 1234,
 })
 
-Member.new({
+trainer = Member.new({
     "name" => "trainer Brock",
     "dob" => "12/Nov/1948",
     "pin" => 1010,
 })
 
-Member.new({
+staff = Member.new({
     "name" => "Cat",
     "dob" => "30/Jul/1982",
     "pin" => 1142,
 })
 
-Class.new({
+yoga = Class.new({
     "name" => "Yoga",
     "instructor" => "Yogi Charles",
     "time_slot" => 0,
@@ -29,7 +30,7 @@ Class.new({
     "capacity" => 32,
 })
 
-Class.new({
+kbbl = Class.new({
     "name" => "Kettle Bell Blast",
     "instructor" => "Cathy",
     "time_slot" => 1,
@@ -37,7 +38,7 @@ Class.new({
     "capacity" => 4,
 })
 
-Class.new({
+pilate = Class.new({
     "name" => "Pilates",
     "instructor" => "Zavi",
     "time_slot" => 0,
@@ -52,3 +53,8 @@ Class.new({
 #    "day" => ,
 #    "capacity" => ,
 #})
+
+Booking.new({
+    "member_id" => ed.id,
+    "class_id" => yoga.id
+})
