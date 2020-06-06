@@ -1,6 +1,6 @@
+DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS classes;
-DROP TABLE IF EXISTS bookings;
 
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
@@ -14,7 +14,7 @@ CREATE TABLE classes (
     name VARCHAR(255),
     instructor VARCHAR(255),
     time_slot INTEGER,
-    day INTEGER,
+    day VARCHAR(255),
     capacity INTEGER
 );
 
