@@ -7,7 +7,7 @@ class GymClass
     def initialize(options)
         @id = options['id'].to_i() if options['id']
         @name = options['name']
-        @intructor = options['instructor']
+        @instructor = options['instructor']
         @time_slot = options['time_slot']
         @day = options['day']
         @capacity = options['capacity']
