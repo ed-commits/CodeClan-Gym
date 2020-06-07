@@ -2,6 +2,7 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 
 require_relative('controllers/signup')
+require_relative('controllers/classes')
 
 get '/' do
     erb( :index )
