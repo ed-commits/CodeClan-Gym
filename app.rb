@@ -12,3 +12,7 @@ get '/about-us' do
     erb( :aboutus )
 end
 
+get '/sign-up' do
+    erb( :signup )
+end
+
