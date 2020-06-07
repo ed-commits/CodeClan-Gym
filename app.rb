@@ -5,5 +5,10 @@ require( 'sinatra/contrib/all' )
 #require_relative('controllers/bitings_controller')
 
 get '/' do
-  erb( :index )
+    erb( :index )
 end
+
+get '/about-us' do
+    erb( :aboutus )
+end
+
