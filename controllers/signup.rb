@@ -10,6 +10,7 @@ end
 post '/sign-up' do
     member = Member.new(params)
     if member.valid?
+        @pin = member.pin
         erb(:signup_created)
     else
         erb(:signup_tooyoung)

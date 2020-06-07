@@ -10,6 +10,9 @@ class Member
         @dob = options['dob']
         @pin = options['pin']
         if valid? && @id.nil?
+            if @pin.nil?
+                generate_pin
+            end
             save
         end
     end
@@ -27,6 +30,17 @@ class Member
             # So it wasn't a valid date of birth
             return false
         end
+    end
+
+    def generate_pin
+        a = Random.rand(0...10)
+        b = Random.rand(0...10)
+        c = Random.rand(0...10)
+        d = Random.rand(0...10)
+
+        ## TODO: check this isn't an existing PIN
+
+        @pin = "#{a}#{b}#{c}#{d}"
     end
 
     def save()
