@@ -16,3 +16,8 @@ get '/sign-up' do
     erb( :signup )
 end
 
+
+get '/terminate' do
+    erb( :terminate )
+end
+
