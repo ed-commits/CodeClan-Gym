@@ -14,7 +14,3 @@ end
 get '/terminate' do
     erb( :terminate )
 end
-
-get '/classes' do
-    erb( :classes )
-end
