@@ -52,6 +52,16 @@ pilate = GymClass.new({
     "capacity" => 15,
 })
 
+# Add a class next month to test
+# that classes this month works
+plift = GymClass.new({
+    "name" => "Power Lifting",
+    "instructor" => "Bruce",
+    "time_slot" => 0,
+    "day" => "3/Jul/2020",
+    "capacity" => 15,
+})
+
 #Class.new({
 #    "name" => "",
 #    "instructor" => ,

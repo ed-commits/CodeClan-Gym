@@ -45,4 +45,29 @@ class GymClass
         values = [@id, @name, @instructor, @time_slot, @day, @capacity]
         SqlRunner.run(sql, values)
     end
+
+    def self.map_new(collection)
+        collection.map{|parameters| GymClass.new(parameters)}
+    end
+
+    def self.classes
+        # List all classes
+        sql = "SELECT * FROM classes;"
+        GymClass.map_new(SqlRunner.run(sql))
+    end
+
+    def self.classes_this_month
+        # List all classes this month
+
+        # Get the first day of this month
+        first_day = Date.new(Date.today.year, Date.today.month, 1)
+        # next month
+        ## TODO: what happens in december?
+        last_day = Date.new(Date.today.year, Date.today.month + 1, 1)
+
+        sql = "SELECT * FROM classes
+                WHERE day >= $1 AND day < $2;"
+        values = [first_day.strftime("%Y-%m-%d"), last_day.strftime("%Y-%m-%d")]
+        GymClass.map_new(SqlRunner.run(sql, values))
+    end
 end
