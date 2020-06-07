@@ -1,0 +1,33 @@
+body {
+	background-color: #6290C3;
+	color: #1A1B41;
+	font-family: fantasy;
+}
+
+.box {
+	background-color: #C2E7DA;
+	padding: 20px;
+	margin: 20px;
+}
+
+.classes-row {
+	display: flex;
+	flex-direction: row;
+	align-content: space-between;
+	justify-content: center;
+}
+
+.classes-col {
+}
+
+.class {
+	width: 80px;
+	height: 80px;
+	background-color: #F1FFE7;
+	margin: 5px;
+	padding: 10px;
+}
+
+.day {
+	background-color: #F1FFE7;
+}
