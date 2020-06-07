@@ -56,18 +56,69 @@ class GymClass
         GymClass.map_new(SqlRunner.run(sql))
     end
 
+    def self.first_day_of_month
+        return Date.new(Date.today.year, Date.today.month, 1)
+    end
+
+    def self.last_day_of_month
+        ## TODO: what happens in december?
+        return Date.new(Date.today.year, Date.today.month + 1, 1) - 1
+    end
+
     def self.classes_this_month
         # List all classes this month
-
-        # Get the first day of this month
-        first_day = Date.new(Date.today.year, Date.today.month, 1)
-        # next month
-        ## TODO: what happens in december?
-        last_day = Date.new(Date.today.year, Date.today.month + 1, 1)
-
         sql = "SELECT * FROM classes
-                WHERE day >= $1 AND day < $2;"
-        values = [first_day.strftime("%Y-%m-%d"), last_day.strftime("%Y-%m-%d")]
+                WHERE day >= $1 AND day <= $2
+                ORDER BY day;"
+        values = [first_day_of_month.strftime("%Y-%m-%d"), last_day_of_month.strftime("%Y-%m-%d")]
         GymClass.map_new(SqlRunner.run(sql, values))
+    end
+
+    def self.classes_this_month_friendly
+        # The classes this month is a sparse array of classes
+        # make it into data that is more friendly for erb
+        # to display by filling it and grouping it into weeks
+
+        # Which weekday do we start on?
+        starting_weekday = GymClass.first_day_of_month.wday
+        
+        # How many days does this month have?
+        days_this_month = GymClass.last_day_of_month.day
+        
+        # How many weeks this month?
+        rows = days_this_month/7
+
+        # true represents a day of the month with nothing on
+        # false represents a day outside the current month
+        # When something is on a GymClass object will be put in that space
+        weeks = Array.new(rows)
+        weeks.each_index do |i|
+            weeks[i] = Array.new(7, true)
+        end
+
+        # block out the days before this month starts
+        (1...starting_weekday).each do |day|
+            weeks[0][day-1] = false
+        end
+
+        # block out the days after this month ends
+        (days_this_month % 7..7).each do |day|
+            weeks[rows-1][day-1] = false
+        end
+
+        puts "YYYYYYYYYY"
+        puts GymClass.classes_this_month
+        GymClass.classes_this_month.each do |clss|
+            class_mday = Date.parse(clss.day).mday + starting_weekday
+
+            row = class_mday / 7
+            col = class_mday % 7
+
+            weeks[row][col-1] = clss
+            puts "#{row} #{col}"
+            puts "XXXXXXXXXXXXXXX"
+        end
+
+        return weeks
     end
 end

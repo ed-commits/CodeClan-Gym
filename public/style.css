@@ -20,14 +20,31 @@ body {
 .classes-col {
 }
 
-.class {
-	width: 80px;
-	height: 80px;
+.day {
+	width: 130px;
+	height: 130px;
 	background-color: #F1FFE7;
 	margin: 5px;
-	padding: 10px;
+	padding: 5px;
 }
 
-.day {
-	background-color: #F1FFE7;
+.header {
+	background-color: #364156;
+	color: white;
+
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
 }
+
+.class {
+	background-color: #72FDB8;
+
+	font-size: 13px;
+	line-spacing: 10px;
+}
+
+.off-month {
+	background-color: grey;
+}
+
