@@ -9,8 +9,23 @@ class Member
         @name = options['name']
         @dob = options['dob']
         @pin = options['pin']
-        if @id.nil?
+        if valid? && @id.nil?
             save
+        end
+    end
+
+    def age
+        days_lived = (Date.today - Date.parse(@dob)).to_i
+        return days_lived / 365
+    end
+
+    def valid?
+        begin
+            return age > 16
+        rescue
+            # We couldn't convert the @dob string to a date
+            # So it wasn't a valid date of birth
+            return false
         end
     end
 
