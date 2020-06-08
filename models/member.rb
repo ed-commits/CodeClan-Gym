@@ -9,6 +9,7 @@ class Member
         @name = options['name']
         @dob = options['dob']
         @pin = options['pin']
+        @active = 1
         @active = options['active'].to_i if options['active']
         if valid? && @id.nil?
             if @pin.nil?
@@ -72,5 +73,23 @@ class Member
                 WHERE id = $1"
         values = [@id, @name, @dob, @pin, @active]
         SqlRunner.run(sql, values)
+    end
+
+    def terminate()
+        @active = 0
+        update
+    end
+
+    def self.by_pin(pin)
+        sql = "SELECT * FROM members
+                WHERE pin = $1;"
+        values = [pin]
+        result = SqlRunner.run(sql, values)
+        
+        if result.ntuples == 1
+            Member.new(result[0])
+        else
+            return nil
+        end
     end
 end

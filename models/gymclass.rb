@@ -106,7 +106,6 @@ class GymClass
             weeks[rows-1][day-1] = false
         end
 
-        puts "YYYYYYYYYY"
         puts GymClass.classes_this_month
         GymClass.classes_this_month.each do |clss|
             class_mday = Date.parse(clss.day).mday + starting_weekday
@@ -115,8 +114,6 @@ class GymClass
             col = class_mday % 7
 
             weeks[row][col-1] = clss
-            puts "#{row} #{col}"
-            puts "XXXXXXXXXXXXXXX"
         end
 
         return weeks
