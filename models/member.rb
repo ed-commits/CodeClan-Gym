@@ -1,7 +1,7 @@
 require_relative('../db/sqlrunner')
 
 class Member
-    attr_accessor :name, :dob, :pin
+    attr_accessor :name, :dob, :pin, :active
     attr_reader :id
 
     def initialize(options)
@@ -84,6 +84,19 @@ class Member
         sql = "SELECT * FROM members
                 WHERE pin = $1;"
         values = [pin]
+        result = SqlRunner.run(sql, values)
+        
+        if result.ntuples == 1
+            Member.new(result[0])
+        else
+            return nil
+        end
+    end
+
+    def self.by_name_and_dob(name, dob)
+        sql = "SELECT * FROM members
+                WHERE (name, dob) = ($1, $2);"
+        values = [name, dob]
         result = SqlRunner.run(sql, values)
         
         if result.ntuples == 1
