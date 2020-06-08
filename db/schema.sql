@@ -6,7 +6,8 @@ CREATE TABLE members (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     dob VARCHAR(255),
-    pin INTEGER
+    pin INTEGER,
+    active BOOLEAN
 );
 
 CREATE TABLE classes (

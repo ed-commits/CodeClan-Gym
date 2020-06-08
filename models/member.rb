@@ -9,6 +9,7 @@ class Member
         @name = options['name']
         @dob = options['dob']
         @pin = options['pin']
+        @active = options['active'].to_i if options['active']
         if valid? && @id.nil?
             if @pin.nil?
                 generate_pin
@@ -45,10 +46,10 @@ class Member
 
     def save()
         sql = "INSERT INTO members
-                (name, dob, pin)
-                VALUES ($1, $2, $3)
+                (name, dob, pin, active)
+                VALUES ($1, $2, $3, $4)
                 RETURNING id;"
-        values = [@name, @dob, @pin]
+        values = [@name, @dob, @pin, @active]
         @id = SqlRunner.run(sql, values)[0]['id'].to_i()
     end
 
@@ -66,10 +67,10 @@ class Member
 
     def update()
         sql = "UPDATE members
-                SET (name, dob, pin)
-                = ($2, $3, $4)
+                SET (name, dob, pin, active)
+                = ($2, $3, $4, $5)
                 WHERE id = $1"
-        values = [@id, @name, @dob, @pin]
+        values = [@id, @name, @dob, @pin, @active]
         SqlRunner.run(sql, values)
     end
 end
