@@ -18,7 +18,7 @@
         <% if day.instance_of? GymClass %>
             <div class="day class">
             <p><%= day.day %></p>
-            <p><b><%= day.name %></b></p>
+            <p><b><%= day.name %></b> <a href=<%= "/book/" + day.id.to_s %> >Book now!</a></p>
             <p>Instructor: <%= day.instructor %></p>
             <p>Capacity: <%= day.capacity %></p>
             </div>

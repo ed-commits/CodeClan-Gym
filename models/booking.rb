@@ -1,5 +1,8 @@
 require_relative('../db/sqlrunner')
 
+require_relative('./gymclass')
+require_relative('./member')
+
 class Booking
     attr_accessor :member_id, :class_id
     attr_reader :id
@@ -32,5 +35,19 @@ class Booking
     def self.delete_all
         sql = "DELETE FROM bookings;"
         SqlRunner.run(sql)
+    end
+
+    def self.create_for_class_and_pin(id, pin)
+        clss = GymClass.by_id(id)
+        member = Member.by_pin(pin)
+        
+        if clss.nil? || member.nil?
+            return nil
+        end
+
+        return Booking.new({
+            "class_id" => clss.id,
+            "member_id" => member.id
+        })
     end
 end

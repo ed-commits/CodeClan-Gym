@@ -118,4 +118,17 @@ class GymClass
 
         return weeks
     end
+
+    def self.by_id(id)
+        sql = "SELECT * FROM classes
+                WHERE id = $1;"
+        values = [id]
+        result = SqlRunner.run(sql, values)
+        
+        if result.ntuples == 1
+            GymClass.new(result[0])
+        else
+            return nil
+        end
+    end
 end
