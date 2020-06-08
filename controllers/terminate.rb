@@ -10,6 +10,7 @@ end
 post '/terminate' do
     member = Member.by_pin(params['pin'])
     if member
+        @name = member.name
         member.terminate
         erb(:terminate_successful)
     else
