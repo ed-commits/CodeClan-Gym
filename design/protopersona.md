@@ -1,5 +1,7 @@
 # Protopersona
 
+![](russel.png)
+
 ## Russel
 
 * Russel is a developer.
