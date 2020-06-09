@@ -2,14 +2,20 @@
 	<h1>Class</h1>
 </div>
 <div class="box">
-    <p>About <%= @class.name %>.</p>
+    <p>About <b><%= @class.name %></b>.</p>
     <p>This class is at <%= @class.day %></p>
-    <br />
-    <p>The following members have signed up:</p>
-    <ul>
-        <li></li>
-    </ul>
+    <% if @members.empty? %>
+        <p>Be the first to sign up!</p>
+    <% else %>
+        <p>The following members have signed up:</p>
+        <ul>
+        <% for member in @members %>
+            <li><%= member.name %></li>
+        <% end %>
+        </ul>
+    <% end %>
 </div>
 <div class="box">
-	<a href="/">Home</a>
+<a href="/classes">Back to Classes</a>
+<a href="/">Home</a>
 </div>
