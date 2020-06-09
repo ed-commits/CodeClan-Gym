@@ -7,13 +7,13 @@ require_relative('../models/booking')
 
 get '/book/:class' do
     @class = GymClass.by_id(params[:class])
-    erb( :booking_confirmation )
+    erb( :'booking/confirmation' )
 end
 
 post '/book/confirm' do
     if Booking.create_for_class_and_pin(params["id"], params["pin"])
-        erb( :booking_successful )
+        erb( :'booking/successful' )
     else
-        erb( :booking_failed )
+        erb( :'booking/failed' )
     end
 end

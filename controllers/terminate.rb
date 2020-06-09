@@ -12,8 +12,8 @@ post '/terminate' do
     if member
         @name = member.name
         member.terminate
-        erb(:terminate_successful)
+        erb(:'terminate/successful')
     else
-        erb(:terminate_failed)
+        erb(:'terminate/failed')
     end
 end

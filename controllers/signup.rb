@@ -12,11 +12,11 @@ post '/sign-up' do
     case status
     when :success
         @pin = member.pin
-        erb(:signup_created)
+        erb(:'signup/created')
     when :reactivated
         @pin = member.pin
-        erb(:signup_reactivated)
+        erb(:'signup/reactivated')
     else
-        erb(:signup_tooyoung)
+        erb(:'signup/tooyoung')
     end
 end
