@@ -79,6 +79,10 @@ class Member
         @active = 0
         update
     end
+    
+    def self.map_new(collection)
+        collection.map{|parameters| Member.new(parameters)}
+    end
 
     def self.by_pin(pin)
         sql = "SELECT * FROM members

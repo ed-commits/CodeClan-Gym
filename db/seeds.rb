@@ -74,6 +74,23 @@ Booking.new({
     "member_id" => ed.id,
     "class_id" => yoga.id
 })
+Booking.new({
+    "member_id" => trainer.id,
+    "class_id" => yoga.id
+})
+Booking.new({
+    "member_id" => staff.id,
+    "class_id" => yoga.id
+})
+
+Booking.new({
+    "member_id" => ed.id,
+    "class_id" => kbbl.id
+})
+Booking.new({
+    "member_id" => trainer.id,
+    "class_id" => kbbl.id
+})
 
 binding.pry
 nil

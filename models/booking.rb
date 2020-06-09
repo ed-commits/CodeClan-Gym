@@ -50,4 +50,13 @@ class Booking
             "member_id" => member.id
         })
     end
+
+    def self.members_taking_class(id)
+        sql = "SELECT * from members
+                INNER JOIN bookings
+                ON bookings.member_id = members.id
+                WHERE bookings.class_id = $1;"
+        values = [id]
+        return Member.map_new(SqlRunner.run(sql, values))
+    end
 end
