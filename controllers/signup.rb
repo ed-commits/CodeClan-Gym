@@ -8,19 +8,15 @@ get '/sign-up' do
 end
 
 post '/sign-up' do
-    member = Member.by_name_and_dob(params['name'], params['dob'])
-    if member
-        member.active = 1
-        member.update
+    member, status = Member.sign_up(params['name'], params['dob'])
+    case status
+    when :success
+        @pin = member.pin
+        erb(:signup_created)
+    when :reactivated
         @pin = member.pin
         erb(:signup_reactivated)
     else
-        member = Member.new(params)
-        if member.valid?
-            @pin = member.pin
-            erb(:signup_created)
-        else
-            erb(:signup_tooyoung)
-        end
+        erb(:signup_tooyoung)
     end
 end

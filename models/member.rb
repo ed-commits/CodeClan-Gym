@@ -105,4 +105,23 @@ class Member
             return nil
         end
     end
+
+    def self.sign_up(name, dob)
+        member = Member.by_name_and_dob(name, dob)
+        if member
+            member.active = 1
+            member.update
+            return member, :reactivated
+        else
+            member = Member.new({
+                "name" => name,
+                "dob" => dob
+            })
+            if member.valid?
+                return member, :success
+            else
+                return nil, :fail
+            end
+        end
+    end
 end
