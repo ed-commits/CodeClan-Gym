@@ -17,10 +17,13 @@
     <% for day in week %>
         <% if day.instance_of? GymClass %>
             <div class="day class">
-            <p><%= day.day %></p>
-            <p><b><a href= <%= "/class/" + day.id.to_s %> ><%= day.name %></b></a> <a href=<%= "/book/" + day.id.to_s %> >Book now!</a></p>
-            <p>Instructor: <%= day.instructor %></p>
-            <p>Capacity: <%= day.capacity %></p>
+            <p><%== day.day %></p>
+            <p>
+                <b><a href= <%=attr_esc "/class/" + day.id.to_s %> ><%== day.name %></a></b>
+                <a href=<%== "/book/" + day.id.to_s %> >Book now!</a>
+            </p>
+            <p>Instructor: <%== day.instructor %></p>
+            <p>Capacity: <%== day.capacity %></p>
             </div>
         <% elsif day %>
             <div class="day"></div>

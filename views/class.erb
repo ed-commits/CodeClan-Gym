@@ -2,15 +2,15 @@
 	<h1>Class</h1>
 </div>
 <div class="box">
-    <p>About <b><%= @class.name %></b>.</p>
-    <p>This class is at <%= @class.day %></p>
+    <p>About <b><%== @class.name %></b>.</p>
+    <p>This class is at <%== @class.day %></p>
     <% if @members.empty? %>
         <p>Be the first to sign up!</p>
     <% else %>
         <p>The following members have signed up:</p>
         <ul>
         <% for member in @members %>
-            <li><%= member.name %></li>
+            <li><%== member.name %></li>
         <% end %>
         </ul>
     <% end %>
