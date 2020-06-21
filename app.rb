@@ -10,7 +10,7 @@ require_relative('controllers/booking')
 
 helpers do
     def attr_esc(text)
-      Rack::Utils.escape_path(text)
+      "\"" + Rack::Utils.escape_path(text) + "\""
     end
   end
 

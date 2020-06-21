@@ -9,6 +9,7 @@ end
 
 post '/sign-up' do
     member, status = Member.sign_up(params['name'], params['dob'])
+    @name = params['name']
     case status
     when :success
         @pin = member.pin

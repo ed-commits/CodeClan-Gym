@@ -19,8 +19,8 @@
             <div class="day class">
             <p><%== day.day %></p>
             <p>
-                <b><a href= <%=attr_esc "/class/" + day.id.to_s %> ><%== day.name %></a></b>
-                <a href=<%== "/book/" + day.id.to_s %> >Book now!</a>
+                <b><a href=<%=attr_esc "/class/" + day.id.to_s %> ><%== day.name %></a></b>
+                <a href=<%=attr_esc "/book/" + day.id.to_s %> >Book now!</a>
             </p>
             <p>Instructor: <%== day.instructor %></p>
             <p>Capacity: <%== day.capacity %></p>
